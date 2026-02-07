@@ -31,17 +31,17 @@ export const MainHeader = ({ breadcrumbs, onNavigate }) => {
   }, [showCreateModal, showNotifications]);
 
   return (
-    <header className="flex items-center justify-between h-14 border-b border-border/50 bg-card/50 backdrop-blur-sm px-4 md:px-6 sticky top-0 z-10">
+    <header className="flex items-center justify-between h-16 border-b border-border/30 bg-card/80 backdrop-blur-lg px-4 md:px-8 sticky top-0 z-10 shadow-soft">
       {/* Breadcrumbs */}
-      <div className="flex items-center text-sm font-medium text-muted-foreground">
+      <div className="flex items-center text-sm font-semibold text-muted-foreground gap-1">
         {breadcrumbs.map((crumb, index) => (
           <React.Fragment key={index}>
-            {index > 0 && <ChevronRight className="h-4 w-4 mx-1" />}
+            {index > 0 && <ChevronRight className="h-4 w-4 opacity-50" />}
             <span
               className={
                 index === breadcrumbs.length - 1
-                  ? 'text-foreground'
-                  : 'hover:text-foreground cursor-pointer'
+                  ? 'text-foreground font-bold'
+                  : 'hover:text-foreground cursor-pointer transition-colors'
               }
             >
               {crumb}
@@ -57,8 +57,8 @@ export const MainHeader = ({ breadcrumbs, onNavigate }) => {
             <Plus className="h-4 w-4 mr-2" /> New
           </Button>
           {showCreateModal && (
-            <div className="absolute right-0 top-full mt-2 bg-card border border-border/50 rounded-lg shadow-lg z-50 min-w-[200px] p-1.5">
-              <div className="text-xs font-medium px-2 py-1.5 text-muted-foreground uppercase tracking-wide">
+            <div className="absolute right-0 top-full mt-3 bg-card border border-border/40 rounded-xl shadow-elevated z-50 min-w-[220px] p-2 backdrop-blur-sm bg-background/95">
+              <div className="text-xs font-bold px-3 py-2 text-muted-foreground uppercase tracking-wider">
                 Create New
               </div>
               <Button
@@ -107,9 +107,9 @@ export const MainHeader = ({ breadcrumbs, onNavigate }) => {
             )}
           </Button>
           {showNotifications && (
-            <div className="absolute right-0 top-full mt-2 bg-card border border-border/50 rounded-lg shadow-lg z-50 w-80 max-h-96 overflow-hidden flex flex-col">
-              <div className="flex items-center justify-between p-3 border-b border-border/50">
-                <h3 className="text-sm font-semibold">Notifications</h3>
+            <div className="absolute right-0 top-full mt-3 bg-card border border-border/40 rounded-xl shadow-elevated z-50 w-96 max-h-96 overflow-hidden flex flex-col backdrop-blur-sm bg-background/95">
+              <div className="flex items-center justify-between p-4 border-b border-border/30">
+                <h3 className="text-sm font-bold">Notifications</h3>
                 {unreadCount > 0 && (
                   <Button
                     variant="ghost"
@@ -190,4 +190,3 @@ export const MainHeader = ({ breadcrumbs, onNavigate }) => {
     </header>
   );
 };
-
